@@ -30,14 +30,14 @@ reference: jsonpath "$.reference"
 history_address: header "Swarm-Act-History-Address"
 
 # download with ACT
-GET http://{{host}}:{{bee_api_port}}/bzz/{{reference}}/README.md
+GET http://{{host}}:{{bee_api_port}}/bzz/{{reference}}/{{file_name}}
 Accept: */*
 Swarm-Act: true
 Swarm-Act-History-Address: {{history_address}}
 Swarm-Act-Publisher: {{public_key}}
 Swarm-Act-Timestamp: 1
 HTTP 200
-file,README.md;
+file,{{file_name}};
 
 # download with ACT valid public key but not for current ACT
 GET http://{{host}}:{{bee_api_port}}/bzz/{{reference}}/{{file_name}}
