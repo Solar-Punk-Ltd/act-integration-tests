@@ -51,4 +51,4 @@ HTTP 500
 # download without ACT
 GET http://{{host}}:{{bee_api_port}}/bzz/{{reference}}/{{file_name}}
 Accept: */*
-HTTP 200
+HTTP 404
