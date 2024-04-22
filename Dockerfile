@@ -2,13 +2,10 @@ FROM golang:1.21 AS build
 
 RUN mkdir -p /repo; \
     cd /repo;  \
-    git clone --branch act-ctrl https://github.com/Solar-Punk-Ltd/bee.git
+    git clone --branch act https://github.com/Solar-Punk-Ltd/bee.git
 
 WORKDIR /repo/bee/
-# enable modules caching in separate layer
-#COPY go.mod go.sum ./
 RUN go mod download
-#COPY . ./
 
 RUN make binary
 

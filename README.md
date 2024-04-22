@@ -53,23 +53,23 @@ To create a custom bee with ACT, checkout the `act-ctrl` branch and build bee us
 1. Build the Docker image:
 
     ```shell
-    docker build --progress=plain --no-cache -t bee-act-ctrl .
+    docker build --progress=plain --no-cache -t bee-act .
     ```
 
 2. Run the container (bee with act in dev mode):
 
     ```shell
-     docker run -it --rm --network=host --name bee-act bee-act-ctrl
+    docker run -it --rm --network=host --name bee-act bee-act
     ```
 
 3. Execute the `updown.hurl` test:
 
     ```shell
-     hurl updown.hurl --test --variable file_name=README.md
+    hurl updown.hurl --test --variable file_name=README.md
     ```
 
 4. Run the `test_suite.sh` script:
 
     ```shell
-     ./test_suite.sh
+    ./test_suite.sh
     ```
