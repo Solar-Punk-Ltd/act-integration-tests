@@ -28,15 +28,19 @@ swarm-postage-batch-id: {{batch_id}}
 HTTP 200
 [Captures]
 grantees: body
+[Asserts]
+jsonpath "$" isEmpty
 
 PATCH http://{{host}}:{{bee_api_port}}/grantee/{{grantees_ref}}
 Accept: */*
 swarm-postage-batch-id: {{batch_id}}
 Swarm-Act-History-Address: {{history_ref}}
 Content-type: application/json
+[Options]
+variable: grantee_1="03c11754db8b94831731e57a3f598b147a2eb6c9ed8569c5ac091236f67602f6d6"
 {
-"add": ["03c11754db8b94831731e57a3f598b147a2eb6c9ed8569c5ac091236f67602f6d6"],
-"revoke": ["03c11754db8b94831731e57a3f598b147a2eb6c9ed8569c5ac091236f67602f6d5"]
+"add": ["{{grantee_1}}"],
+"revoke": ["{{public_key}}"]
 }
 HTTP 200
 [Captures]
@@ -49,6 +53,8 @@ swarm-postage-batch-id: {{batch_id}}
 HTTP 200
 [Captures]
 grantees: body
+[Asserts]
+jsonpath "$[0]" == {{grantee_1}}
 
 # 2/b. Removing viewers from grantee list without content change
 # - I'm a publisher
@@ -64,7 +70,7 @@ Swarm-Act-History-Address: {{history_ref}}
 Content-type: application/json
 {
 "add": [],
-"revoke": ["03c11754db8b94831731e57a3f598b147a2eb6c9ed8569c5ac091236f67602f6d6"]
+"revoke": ["{{grantee_1}}"]
 }
 HTTP 200
 [Captures]
@@ -77,6 +83,8 @@ swarm-postage-batch-id: {{batch_id}}
 HTTP 200
 [Captures]
 grantees: body
+[Asserts]
+jsonpath "$" isEmpty
 
 # 2/c. Removing viewers from grantee list with content update
 # - I'm a publisher
