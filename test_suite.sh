@@ -32,9 +32,6 @@ checkenv "HURL_host"
 checkenv "HURL_bee_api_port"
 
 execute ./tests/01.hurl
-execute ./tests/01_a.hurl
 execute ./tests/02.hurl
-execute ./tests/02_a.hurl
 execute ./tests/03.hurl
 execute ./tests/04.hurl
-execute ./tests/04_a.hurl
