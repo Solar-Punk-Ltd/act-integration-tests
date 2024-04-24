@@ -38,14 +38,10 @@ COPY tests/ /home/bee/tests/
 COPY test.sh /home/bee/test.sh
 COPY test_suite.sh /home/bee/test_suite.sh
 COPY updown.hurl /home/bee/updown.hurl
+COPY bee-config-sepolia.yaml /home/bee/bee.yaml
 
 EXPOSE 1633 1634 1635
 USER bee
 WORKDIR /home/bee
 
-RUN cd /home/bee && \
-    bee dev & \
-    sleep 10 && \
-    ./test.sh
-
-ENTRYPOINT ["bee", "dev"]
+ENTRYPOINT ["bee", "start", "--config", "bee.yaml"]

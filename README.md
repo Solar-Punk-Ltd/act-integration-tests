@@ -56,6 +56,11 @@ To create a custom bee with ACT, checkout the `act-ctrl` branch and build bee us
     docker build --progress=plain --no-cache -t bee-act .
     ```
 
+   If you want to build the image with a specific version of Bee, you can use the `--build-arg` option, but the BEE_REPO and BEE_BRANCH arguments have a default value as well in the Dockerfile:
+   ```shell
+   docker build --build-arg BEE_REPO=https://github.com/Solar-Punk-Ltd/bee.git --build-arg BEE_BRANCH=master --progress=plain --no-cache -t bee-act .
+   ```
+
 2. Run the container (bee with act in dev mode):
 
     ```shell
