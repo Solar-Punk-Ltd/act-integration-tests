@@ -14,7 +14,7 @@ The tool is using the [web3cli](https://github.com/coccoinomane/web3cli) project
 The Dockerfile can be used to build the image. Two build arguments are required:
 
 - `RPC_URL` - the URL of the Ethereum node to connect to
-- `P_KEY` - the private key of the wallet to use for funding
+- `P_KEY` - the private key of the wallet to use as the source of funds
 
 __Note:__ This solution is intended for testnet usage only. To protect the private key, the resulting Docker image
 should never be uploaded to any public registry.
