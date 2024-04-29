@@ -17,6 +17,9 @@ function retrieve_funds() {
 
 docker cp "$bee_container":/home/bee/.bee/keys/swarm.key node_swarm.key
 
+# deleting noe_wallet if it exists
+w3 signer delete node_wallet
+
 /usr/bin/expect <<EOF 2>/dev/null
 spawn w3 signer add node_wallet --keyfile node_swarm.key
 expect "Keyfile password:"

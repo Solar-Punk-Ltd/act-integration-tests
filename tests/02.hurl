@@ -8,7 +8,7 @@ POST http://{{host}}:{{bee_api_port}}/grantee
 Accept: */*
 swarm-postage-batch-id: {{batch_id}}
 Content-type: application/json
-{"grantees": []
+{"grantees": ["{{public_key}}"]
 }
 HTTP 201
 [Captures]
@@ -29,7 +29,7 @@ HTTP 200
 [Captures]
 grantees: body
 [Asserts]
-jsonpath "$" isEmpty
+jsonpath "$[0]" == {{public_key}}
 
 PATCH http://{{host}}:{{bee_api_port}}/grantee/{{grantees_ref}}
 Accept: */*
