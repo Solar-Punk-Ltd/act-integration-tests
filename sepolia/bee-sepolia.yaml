@@ -6,8 +6,8 @@
 # block-time: 15
 ## initial nodes to connect to (default [/dnsaddr/mainnet.ethswarm.org])
 bootnode: /dnsaddr/sepolia.testnet.ethswarm.org
-## config file (default is /home/<user>/.bee-config-sepolia.yaml)
-config: ./bee-config-sepolia.yaml
+## config file (default is /home/<user>/.bee-sepolia.yaml)
+config: ./bee-sepolia.yaml
 ## origins with CORS headers enabled
 # cors-allowed-origins: []
 ## data directory (default "/home/<user>/.bee")

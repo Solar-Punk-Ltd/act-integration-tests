@@ -17,8 +17,8 @@ function retrieve_funds() {
 
 docker cp "$bee_container":/home/bee/.bee/keys/swarm.key node_swarm.key
 
-# deleting noe_wallet if it exists
-w3 signer delete node_wallet
+# Deleting node_wallet if it exists
+w3 signer    delete node_wallet
 
 /usr/bin/expect <<EOF 2>/dev/null
 spawn w3 signer add node_wallet --keyfile node_swarm.key
@@ -44,6 +44,8 @@ if (( $(echo "$balance > 0" | bc -l) )); then
   retrieve_funds "$balance" BZZ
 fi
 
+sleep 10
+
 balance=$(w3 balance "$node_wallet" -u wei)
 gas_fee=$(w3 block latest | jq -r '.baseFeePerGas')
 tx_fee=$(echo "$gas_fee * $gas_max" | bc -l)
@@ -54,7 +56,7 @@ if (( $(echo "$retrievable < 0" | bc -l) )); then
   retrievable=0
 fi
 
-printf "Retrievable ETH balance: %f\n" "$retrievable"
+printf "\nRetrievable ETH balance: %f\n" "$retrievable"
 if (( $(echo "$retrievable > 0" | bc -l) )); then
   retrieve_funds "$retrievable" ETH
 fi

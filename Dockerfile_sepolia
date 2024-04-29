@@ -34,11 +34,11 @@ RUN mkdir -p /home/bee/.bee && chown 999:999 /home/bee/.bee
 
 COPY --from=build /repo/bee/dist/bee /usr/local/bin/bee
 
-COPY tests/ /home/bee/tests/
-COPY test.sh /home/bee/test.sh
-COPY test_suite.sh /home/bee/test_suite.sh
-COPY updown.hurl /home/bee/updown.hurl
-COPY bee-config-sepolia.yaml /home/bee/bee.yaml
+COPY **/tests/ /home/bee/tests/
+COPY **/test.sh /home/bee/test.sh
+COPY **/test_suite.sh /home/bee/test_suite.sh
+COPY **/updown.hurl /home/bee/updown.hurl
+COPY **/bee-sepolia.yaml /home/bee/bee.yaml
 
 EXPOSE 1633 1634 1635
 USER bee
