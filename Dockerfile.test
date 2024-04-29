@@ -24,7 +24,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 RUN curl -LO https://github.com/Orange-OpenSource/hurl/releases/download/${HURL_VERSION}/hurl-${HURL_VERSION}-aarch64-unknown-linux-gnu.tar.gz && \
     tar -xvf hurl-${HURL_VERSION}-aarch64-unknown-linux-gnu.tar.gz && \
     mv hurl-${HURL_VERSION}-aarch64-unknown-linux-gnu/hurl /usr/local/bin/ && \
-    rm hurl-${HURL_VERSION}-aarch64-unknown-linux-gnu.tar.gz
+    rm hurl-${HURL_VERSION}-aarch64-unknown-linux-gnu.tar.gz && \
+    rm -rf hurl-${HURL_VERSION}-aarch64-unknown-linux-gnu
 
 RUN npm install --global @ethersphere/swarm-cli
 
