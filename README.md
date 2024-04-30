@@ -82,5 +82,5 @@ To create a custom bee with ACT, checkout the `act-ctrl` branch and build bee us
 ### Run tests in docker build phase
 
 ```shell
-.docker build --progress=plain --no-cache -t bee-act -f Dockerfile.test .
+.docker build --progress=plain --no-cache -t bee-act -f test.Dockerfile .
 ```
