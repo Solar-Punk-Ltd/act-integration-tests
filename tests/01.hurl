@@ -40,3 +40,10 @@ HTTP 500
 GET http://{{host}}:{{bee_api_port}}/bzz/{{reference}}/{{file_name}}
 Accept: */*
 HTTP 404
+
+# 1/a. Reading and editing an existing ACT
+# - I'm a publisher
+# - I have an existing ACT for some content
+# - I can read and edit the ACT
+
+# TODO: Implement 1/a.

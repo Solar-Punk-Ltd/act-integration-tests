@@ -1,8 +1,10 @@
 FROM golang:1.21 AS build
+ARG BEE_REPO='https://github.com/Solar-Punk-Ltd/bee.git'
+ARG BEE_BRANCH=act
 
 RUN mkdir -p /repo; \
     cd /repo;  \
-    git clone --branch act https://github.com/Solar-Punk-Ltd/bee.git
+    git clone --branch $BEE_BRANCH $BEE_REPO
 
 WORKDIR /repo/bee/
 RUN go mod download
