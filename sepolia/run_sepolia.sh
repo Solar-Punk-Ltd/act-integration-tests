@@ -17,7 +17,7 @@ then
 fi
 
 printf "Building image %s ...\n" "$docker_image"
-docker build -q -t "$docker_image" -f ../Dockerfile_sepolia .
+docker build -q -t "$docker_image" -f ../sepolia.Dockerfile .
 
 printf "Starting container as %s ...\n" "$docker_container"
 docker run -d -p 1633:1633 -p 1634:1634 -p 1635:1635 --name "$docker_container" "$docker_image"
