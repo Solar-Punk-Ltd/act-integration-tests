@@ -64,6 +64,24 @@ else
     echo "grantees.txt does not contain grantee_public_keys"
 fi
 
+# +=================================+
+# | patch grantee list              |
+# +=================================+
 
+response_patch_grantee=$(node dist/src/index.js grantee patch grantees-patch.json \
+    --reference $grantee_reference \
+    --history $grantee_history_reference \
+    --stamp $stamp_id)
+grantee_patch_reference=$(echo "$response_patch_grantee" | grep -o 'Grantee reference: [^ ]*' | awk '{print $3}')
+grantee_patch_history_reference=$(echo "$response_patch_grantee"  | grep -o 'Grantee history reference: [^ ]*' | awk '{print $4}')
+echo "  Grantee reference        : $grantee_patch_reference"
+echo "  Grantee history reference: $grantee_patch_history_reference"
 
+# +=================================+
+# | get grantee list                |
+# +=================================+
+
+response_get_grantee=$(node dist/src/index.js grantee get $grantee_patch_reference)
+grantee_public_keys=$(echo "$response_get_grantee" | sed 's/Grantee public keys: //')
+echo "  Grantee public keys      : $grantee_public_keys"
 
