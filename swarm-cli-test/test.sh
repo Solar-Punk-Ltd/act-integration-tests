@@ -50,6 +50,8 @@ grantee_history_reference=$(echo "$response_add_grantee"  | grep -o 'Grantee his
 echo "  Grantee reference        : $grantee_reference"
 echo "  Grantee history reference: $grantee_history_reference"
 
+sleep 1
+
 # +=================================+
 # | get grantee list                |
 # +=================================+
@@ -77,6 +79,8 @@ grantee_patch_history_reference=$(echo "$response_patch_grantee"  | grep -o 'Gra
 echo "  Grantee reference        : $grantee_patch_reference"
 echo "  Grantee history reference: $grantee_patch_history_reference"
 
+sleep 1
+
 # +=================================+
 # | get grantee list                |
 # +=================================+
@@ -84,4 +88,3 @@ echo "  Grantee history reference: $grantee_patch_history_reference"
 response_get_grantee=$(node dist/src/index.js grantee get $grantee_patch_reference)
 grantee_public_keys=$(echo "$response_get_grantee" | sed 's/Grantee public keys: //')
 echo "  Grantee public keys      : $grantee_public_keys"
-
