@@ -26,10 +26,10 @@ Execute the shell script with the file name to upload as an argument:
 [Hurl](https://hurl.dev) test
 
 Uploading a file then downloading it with and without ACT and sets grantees.
-Execute the Hurl script with the file name to upload as the `file_name` variable. Set a delay before each request. This is important because if an grantees update is called again within a second from the latest upload/update, then mantaray save fails with ErrInvalidInput.
+Execute the Hurl script with the file name to upload as the `file_name` variable. Set a delay before each request.
 
 ```shell
-hurl updown.hurl --test --delay=1200 --variable file_name=README.md
+hurl updown.hurl --test --variable file_name=README.md
 ```
 
 For debug mode simply add `-v` to the command:

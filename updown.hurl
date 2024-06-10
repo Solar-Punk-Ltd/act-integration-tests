@@ -65,7 +65,8 @@ ghref: jsonpath "$.historyref"
 
 # get grantee list
 GET http://{{host}}:{{bee_api_port}}/grantee/{{gref}}
-Accept: */*
+[Options]
+delay: 1200
 HTTP 200
 [Asserts]
 jsonpath "$" count == 3
