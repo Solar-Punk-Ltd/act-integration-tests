@@ -52,3 +52,37 @@ HTTP 500
 GET http://{{host}}:{{bee_api_port}}/bzz/{{reference}}/{{file_name}}
 Accept: */*
 HTTP 404
+
+# add grantee list
+POST http://{{host}}:{{bee_api_port}}/grantee
+Accept: */*
+swarm-postage-batch-id: {{batch_id}}
+file,grantees.json;
+HTTP 201
+[Captures]
+gref: jsonpath "$.ref"
+ghref: jsonpath "$.historyref"
+
+# get grantee list
+GET http://{{host}}:{{bee_api_port}}/grantee/{{gref}}
+Accept: */*
+HTTP 200
+[Asserts]
+jsonpath "$" count == 3
+
+# patch grantee list
+PATCH http://{{host}}:{{bee_api_port}}/grantee/{{gref}}
+Accept: */*
+swarm-postage-batch-id: {{batch_id}}
+swarm-act-history-address: {{ghref}}
+file,grantees-patch.json;
+HTTP 200
+[Captures]
+gref2: jsonpath "$.ref"
+
+# get grantee list after patch
+GET http://{{host}}:{{bee_api_port}}/grantee/{{gref2}}
+Accept: */*
+HTTP 200
+[Asserts]
+jsonpath "$" count == 2
