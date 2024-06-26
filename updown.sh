@@ -3,7 +3,6 @@
 input_file=$1
 host="localhost"
 bee_api_port="1633"
-bee_debug_port="1635"
 
 cleanup() {
     # before exit, remove the downloaded file
@@ -16,14 +15,14 @@ trap cleanup EXIT
 # ----------------
 # public key
 # ----------------
-addresses_response=$(curl -s "http://${host}:${bee_debug_port}/addresses" \
+addresses_response=$(curl -s "http://${host}:${bee_api_port}/addresses" \
     -H "accept: application/json, text/plain, */*")
 public_key=$(echo "$addresses_response" | jq -r '.publicKey')
 
 # ----------------
 # stamp
 # ----------------
-stamp_url="http://${host}:${bee_debug_port}/stamps/420000000/17"
+stamp_url="http://${host}:${bee_api_port}/stamps/420000000/17"
 echo "Buying stamp        POST: ${stamp_url}"
 stamp_response=$(curl -s -X POST "${stamp_url}" -H "accept: application/json, text/plain, */*")
 stamp_batch_id=$(echo "$stamp_response" | jq -r '.batchID')
