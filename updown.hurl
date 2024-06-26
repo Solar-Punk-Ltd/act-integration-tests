@@ -1,16 +1,15 @@
 # public key
-GET http://{{host}}:{{bee_debug_api_port}}/addresses
+GET http://{{host}}:{{bee_api_port}}/addresses
 Accept: */*
 [Options]
 variable: host=localhost
 variable: bee_api_port=1633
-variable: bee_debug_api_port=1635
 HTTP 200
 [Captures]
 public_key: jsonpath "$.publicKey"
 
 # stamp
-POST http://{{host}}:{{bee_debug_api_port}}/stamps/420000000/17
+POST http://{{host}}:{{bee_api_port}}/stamps/420000000/17
 Accept: */*
 HTTP 201
 [Captures]

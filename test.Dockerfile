@@ -1,4 +1,4 @@
-FROM golang:1.21 AS build
+FROM golang:1.22 AS build
 ARG BEE_REPO='https://github.com/Solar-Punk-Ltd/bee.git'
 ARG BEE_BRANCH=act
 
@@ -39,7 +39,7 @@ COPY test.sh /home/bee/test.sh
 COPY test_suite.sh /home/bee/test_suite.sh
 COPY updown.hurl /home/bee/updown.hurl
 
-EXPOSE 1633 1634 1635
+EXPOSE 1633 1634
 USER bee
 WORKDIR /home/bee
 
